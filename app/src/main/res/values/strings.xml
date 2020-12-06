@@ -1,14 +1,19 @@
+
 <resources>
+    <string name="ej1">Ejercicio 1</string>
+    <string name="minombre">Aldeco Leo Diego</string>
     <string name="app_name">Formulario_Ej1</string>
     <string name="nombre_hint">Nombre:</string>
     <string name="apellidos_hint">Apellidos:</string>
     <string name="numerocuenta_hint">Número de Cuenta:</string>
     <string name="boton_guardar">Enviar</string>
     <string name = "carrera">Carrera:</string>
+    <string name = "edad">Edad:</string>
 
     <string name = "elige">Elige una carrera:</string>
 
         <string-array name="carreras">
+
             <item>Ingeniería Aeroespacial</item>
             <item>Ingeniería Civil</item>
             <item>Ingeniería Geomática</item>
@@ -20,10 +25,10 @@
             <item>Ingeniería en Computación</item>
             <item>Ingeniería Eléctrica Electrónica</item>
             <item>Ingeniería en Telecomunicaciones</item>
+            <item>Ingeniería en Mecánica</item>
             <item>Ingeniería Industrial</item>
             <item>Ingeniería Mecatrónica</item>
             <item>Ingeniería en Sistemas Biomédicos</item>
-
 
         </string-array>
 
