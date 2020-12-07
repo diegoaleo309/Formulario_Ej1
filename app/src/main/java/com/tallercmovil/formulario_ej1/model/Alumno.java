@@ -25,14 +25,19 @@ A partir de los datos ingresados, se deberá implementar un botón para
     String nombre;
     String apellidos;
     String numCuenta;
-    String fecha;
+    int diaNac;
+    int mesNac;
+    int anioNac;
+
     String carrera;
 
-    public Alumno(String nombre, String apellidos, String numCuenta, String fecha, String carrera) {
+    public Alumno(String nombre, String apellidos, String numCuenta, int diaNac, int mesNac, int anioNac, String carrera) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.numCuenta = numCuenta;
-        this.fecha = fecha;
+        this.diaNac = diaNac;
+        this.mesNac = mesNac;
+        this.anioNac = anioNac;
         this.carrera = carrera;
     }
 
@@ -60,12 +65,28 @@ A partir de los datos ingresados, se deberá implementar un botón para
         this.numCuenta = numCuenta;
     }
 
-    public String getFecha() {
-        return fecha;
+    public int getDiaNac() {
+        return diaNac;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDiaNac(int diaNac) {
+        this.diaNac = diaNac;
+    }
+
+    public int getMesNac() {
+        return mesNac;
+    }
+
+    public void setMesNac(int mesNac) {
+        this.mesNac = mesNac;
+    }
+
+    public int getAnioNac() {
+        return anioNac;
+    }
+
+    public void setAnioNac(int anioNac) {
+        this.anioNac = anioNac;
     }
 
     public String getCarrera() {

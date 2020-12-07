@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
     Spinner spinner;
+    DatePicker dateP;
     String carrera;
 
     @Override
@@ -28,8 +30,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         etNombre = findViewById(R.id.etNombre);
         etApellidos = findViewById(R.id.etApellidos);
         etNumCuenta = findViewById(R.id.etNumCuenta);
+        dateP = findViewById(R.id.datePicker1);
 
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner =  findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.carreras, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (validacion()) {
 
             Intent intent = new Intent(this, MainActivity2.class);
-            Alumno alum = new Alumno(etNombre.getText().toString(), etApellidos.getText().toString(), etNumCuenta.getText().toString(), "", carrera);
+            Alumno alum = new Alumno(etNombre.getText().toString(), etApellidos.getText().toString(), etNumCuenta.getText().toString(), dateP.getDayOfMonth(),dateP.getMonth() ,dateP.getYear() , carrera);
             Bundle bundle = new Bundle();
             bundle.putSerializable("alumno", alum);
             intent.putExtras(bundle);

@@ -9,9 +9,13 @@ import android.widget.TextView;
 
 import com.tallercmovil.formulario_ej1.model.Alumno;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity2 extends AppCompatActivity {
 
-    TextView tvNombre, tvApellidos, tvNumCuenta, tvCarrera;
+    TextView tvNombre, tvApellidos, tvNumCuenta, tvCarrera, tvEdad;
     ImageView imagCarrera;
 
     @Override
@@ -25,50 +29,103 @@ public class MainActivity2 extends AppCompatActivity {
         tvNumCuenta = findViewById(R.id.tvNumCuenta);
         tvCarrera = findViewById(R.id.tvCarrera);
         imagCarrera = findViewById(R.id.imgCarrera);
+        tvEdad = findViewById(R.id.tvEdad);
 
         Bundle bundle = getIntent().getExtras();
 
         Alumno alum = (Alumno )bundle.getSerializable("alumno");
 
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        int anioActual = Integer.parseInt(date.substring(0,4));
+        int mesActual = Integer.parseInt(date.substring(5,7));
+        int diaActual = Integer.parseInt(date.substring(8,10));
+
+        int edad =0;
+
+        if (anioActual > alum.getAnioNac()) {
+            edad = anioActual - alum.getAnioNac() - 1;
+
+
+            if (mesActual > (alum.getMesNac() + 1)) edad++;
+
+            else if (mesActual == (alum.getMesNac()+1)) {
+                if (diaActual >= alum.getDiaNac()) edad++;
+            }
+
+
+        }
 
         tvNombre.setText(alum.getNombre());
         tvApellidos.setText(alum.getApellidos());
         tvNumCuenta.setText(alum.getNumCuenta());
         tvCarrera.setText(alum.getCarrera());
+        tvEdad.setText(String.format(Locale.getDefault(), "%d", edad));
 
 
+        String carrera = alum.getCarrera();
 
-        if(alum.getCarrera().equals("Ingeniería Aeroespacial"))
-            imagCarrera.setImageResource(R.drawable.aeroespacial);
-        else if (alum.getCarrera().equals("Ingeniería Civil"))
-            imagCarrera.setImageResource(R.drawable.civil);
-        else if (alum.getCarrera().equals("Ingeniería Geomática"))
-            imagCarrera.setImageResource(R.drawable.geomatica);
-        else if (alum.getCarrera().equals("Ingeniería Ambiental"))
-            imagCarrera.setImageResource(R.drawable.ambiental);
-        else if (alum.getCarrera().equals("Ingeniería Geofísica"))
-            imagCarrera.setImageResource(R.drawable.geofisica);
-        else if (alum.getCarrera().equals("Ingeniería Geológica"))
-            imagCarrera.setImageResource(R.drawable.geologica);
-        else if (alum.getCarrera().equals("Ingeniería Petrolera"))
-            imagCarrera.setImageResource(R.drawable.petrolera);
-        else if (alum.getCarrera().equals("Ingeniería de Minas y Metalurgía"))
-            imagCarrera.setImageResource(R.drawable.minas);
-        else if (alum.getCarrera().equals("Ingeniería en Computación"))
-            imagCarrera.setImageResource(R.drawable.computacion);
-        else if (alum.getCarrera().equals("Ingeniería Eléctrica Electrónica"))
-            imagCarrera.setImageResource(R.drawable.electrica);
-        else if (alum.getCarrera().equals("Ingeniería en Telecomunicaciones"))
-            imagCarrera.setImageResource(R.drawable.telecom);
-        else if (alum.getCarrera().equals("Ingeniería Industrial"))
-            imagCarrera.setImageResource(R.drawable.industrial);
-        else if (alum.getCarrera().equals("Ingeniería Mecatrónica"))
-            imagCarrera.setImageResource(R.drawable.mecatronica);
-        else if (alum.getCarrera().equals("Ingeniería en Sistemas Biomédicos"))
-            imagCarrera.setImageResource(R.drawable.biomedicos);
-        else if (alum.getCarrera().equals("Ingeniería en Mecánica"))
-            imagCarrera.setImageResource(R.drawable.mecanica);
+        switch(carrera){
 
+            case "Ingeniería Aeroespacial":
+                imagCarrera.setImageResource(R.drawable.aeroespacial);
+                break;
+
+            case "Ingeniería Civil":
+                imagCarrera.setImageResource(R.drawable.civil);
+                break;
+            case "Ingeniería Geomática":
+                imagCarrera.setImageResource(R.drawable.geomatica);
+                break;
+            case "Ingeniería Ambiental":
+                imagCarrera.setImageResource(R.drawable.ambiental);
+                break;
+            case "Ingeniería Geofísica":
+                imagCarrera.setImageResource(R.drawable.geofisica);
+                break;
+            case "Ingeniería Geológica":
+                imagCarrera.setImageResource(R.drawable.geologica);
+                break;
+            case "Ingeniería Petrolera":
+                imagCarrera.setImageResource(R.drawable.petrolera);
+                break;
+
+
+            case "Ingeniería de Minas y Metalurgía":
+                imagCarrera.setImageResource(R.drawable.minas);
+                break;
+
+            case "Ingeniería en Computación":
+                imagCarrera.setImageResource(R.drawable.computacion);
+                break;
+
+            case "Ingeniería Eléctrica Electrónica":
+                imagCarrera.setImageResource(R.drawable.electrica);
+                break;
+
+
+            case "Ingeniería en Telecomunicaciones":
+                imagCarrera.setImageResource(R.drawable.telecom);
+                break;
+            case "Ingeniería Industrial":
+                imagCarrera.setImageResource(R.drawable.industrial);
+                break;
+
+            case "Ingeniería Mecatrónica":
+                imagCarrera.setImageResource(R.drawable.mecatronica);
+                break;
+
+
+            case "Ingeniería en Sistemas Biomédicos":
+                imagCarrera.setImageResource(R.drawable.biomedicos);
+                break;
+
+
+            case "Ingeniería en Mecánica":
+                imagCarrera.setImageResource(R.drawable.mecanica);
+                break;
+
+        }
 
 
 
